@@ -2,10 +2,10 @@ package org.repositorypattern.myrepo.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.repositorypattern.myrepo.model.Employee;
+import org.repositorypattern.myrepo.model.dto.EmployeeDto;
 import org.repositorypattern.myrepo.service.abstrct.IEmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +18,12 @@ public class EmployeeController {
     @GetMapping
     public List<Employee> getAll(){
         return employeeService.getAll();
+    }
+
+    @PostMapping
+    public ResponseEntity<String> save(@RequestBody EmployeeDto employeeDto){
+
+        employeeService.save(employeeDto);
+        return ResponseEntity.ok("Employee added");
     }
 }

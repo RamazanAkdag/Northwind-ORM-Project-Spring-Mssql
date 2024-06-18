@@ -11,4 +11,6 @@ public interface IGenericRepository<T extends IEntity> {
 
     List<T> getAll();
 
+    void save(T t);
+
 }
